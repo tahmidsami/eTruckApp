@@ -14,8 +14,6 @@ class MainActivity : AppCompatActivity() {
 
         buttonMap.setOnClickListener{ //Google map button
             var i = Intent(this, MapsActivity::class.java)
-            i.putExtra("latitude","23.77")
-            i.putExtra("longitude","90.42")
             startActivity(i)
         }
 

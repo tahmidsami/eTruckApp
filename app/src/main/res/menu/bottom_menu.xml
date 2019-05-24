@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_post_photo"
+        android:enabled="true"
+        android:title="Post"
+        android:icon="@drawable/ic_add_a_photo_black_24dp"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/action_see_photos"
+        android:enabled="true"
+        android:title="Gallery"
+        android:icon="@drawable/ic_photo_library_black_24dp"
+        app:showAsAction="ifRoom"
+        />
+
+</menu>
