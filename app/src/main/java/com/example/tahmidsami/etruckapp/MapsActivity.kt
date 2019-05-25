@@ -1,11 +1,13 @@
 package com.example.tahmidsami.etruckapp
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
+import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -17,9 +19,12 @@ import android.support.v4.content.ContextCompat
 import android.widget.Toast
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.model.*
+import kotlinx.android.synthetic.main.activity_maps.*
 
 
 class MapsActivity : FragmentActivity(), OnMapReadyCallback {
+
+    private val CAMERA_REQUEST_CODE =1
 
     private var mMap: GoogleMap? = null
     private var mMarker: Marker? = null
@@ -54,6 +59,19 @@ class MapsActivity : FragmentActivity(), OnMapReadyCallback {
             fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
             fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper())
         }
+
+        //Navigation bar
+        bottom_navigation_view.setOnNavigationItemReselectedListener { item ->
+            when(item.itemId){
+                R.id.action_post_photo -> {
+                    var openCamera = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                    startActivityForResult(openCamera, CAMERA_REQUEST_CODE)
+                }
+                R.id.action_see_photos -> {}
+            }
+            true
+        }
+
     }
 
     private fun buildLocationCallback() {
